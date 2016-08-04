@@ -1,0 +1,39 @@
+#
+# Copyright 6WIND S.A. 2016
+#
+options:
+  credentials-url:
+    type: string
+    default: "http://my.domain:8080/6wind-authentication-credentials-6wind-client_1.0-1_all.deb"
+    description: "A valid URL to retrieve 6wind authentication credentials"
+  license-url:
+    type: string
+    default: "http://my.domain:8080/va.lic"
+    description: "A valid URL to retrieve your 6WIND license file"
+  va-version:
+    type: string
+    default: "1.3"
+    description: "Version of Virtual Accelerator to install."
+  dhclient-timeout:
+    type: boolean
+    default: false
+    description: >
+      Setting this option to true will set a 10seconds timeout for DHCP client
+      requests.
+
+      In some cases, the network configuration registered in /etc/network/ may
+      be wrong. For instance, when Juju defined the eth0 interface as manual in
+      /etc/network/interfaces, but forgot to remove the configuration in
+      /etc/network/interfaces.d/eth0.cfg, that tells it is using DHCP.  In that
+      case, when stopping/starting/restarting virtual-accelerator, we use
+      `ifup -a` to set interfaces up. If the network configuration is bad, we
+      may try for a long time to get a DHCP address, and Juju hook will timeout
+      before DHCP. As a result, charm deployment would be considered failed.
+  VM_MEMORY:
+    type: string
+    default: "4096"
+    description: "VM_MEMORY defines how much memory (in MB) from the hugepages to allocate for virtual machines"
+  FP_MEMORY:
+    type: string
+    default: "auto"
+    description: "FP_MEMORY defines how much memory (in MB) from the hugepages is reserved for the fast path"
