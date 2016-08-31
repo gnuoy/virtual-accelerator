@@ -17,12 +17,10 @@ def install_packages():
     reactive.set_state('charm.installed')
 
 @reactive.when('charm.installed')
-def install_license():
+@reactive.when('neutron-control.connected')
+def install_license(neutron_control):
     virtual_accelerator.install_license()
     virtual_accelerator.generate_fast_path_env()
-
-@reactive.when('neutron-control.connected')
-def check_connected(neutron_control):
     neutron_control.request_restart()
 
 @reactive.when('neutron-plugin.connected')
