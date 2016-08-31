@@ -21,7 +21,9 @@ def install_license():
     virtual_accelerator.install_license()
     virtual_accelerator.generate_fast_path_env()
 
-
+@reactive.when('neutron-control.connected')
+def check_connected(neutron_control):
+    neutron_control.request_restart()
 
 @reactive.when('neutron-plugin.connected')
 def configure_neutron_plugin(neutron_plugin):
