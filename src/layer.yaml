@@ -1,2 +1,2 @@
-includes: ['layer:openstack', 'interface:neutron-plugin', 'interface:neutron-control']
+includes: ['layer:openstack', 'interface:neutron-plugin', 'interface:service-control']
 

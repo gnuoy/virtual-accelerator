@@ -29,11 +29,11 @@ requires:
   container:
     interface: juju-info
     scope: container
+  neutron-control:
+    interface: service-control
 provides:
   net-acceleration:
     interface: va
   neutron-plugin:
     interface: neutron-plugin
     scope: container
-  neutron-control:
-    interface: neutron-control
